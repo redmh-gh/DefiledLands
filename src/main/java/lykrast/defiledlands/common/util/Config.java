@@ -25,6 +25,7 @@ public class Config {
 	// Book Wyrms
 	public static boolean bookWyrmSpawn;
 	public static float conversionRate;
+	public static int bookWyrmMaxLevel;
 	
 	// World
 	public static int weightDesertDefiled, weightPlainsDefiled, weightForestTenebra, weightForestVilespine, weightHillsDefiled, weightSwampDefiled, weightIcePlainsDefiled;
@@ -74,7 +75,9 @@ public class Config {
         		"Can Book Wyrms naturally spawn");
         conversionRate = cfg.getFloat("conversionRate", CATEGORY_BOOK_WYRM, 1.0F, 0.01F, 10.0F, 
         		"Multiplier applied to enchanted books's level fed to Book Wyrms, highly recommended to keep below 1");
-        
+        bookWyrmMaxLevel = cfg.getInt("bookWyrmMaxLevel", CATEGORY_BOOK_WYRM, 60, Integer.MIN_VALUE, Integer.MAX_VALUE, 
+        		"Add modifier for max digestion of bookwyrms");
+
         // World
         weightDesertDefiled = cfg.getInt("weightDesertDefiled", CATEGORY_WORLD, 3, 0, 100, 
         		"Weight of Defiled Deserts in generation with greater weight meaning more common, 10 is most vanilla biomes, 0 prevents generation");

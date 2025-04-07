@@ -317,7 +317,7 @@ public class EntityBookWyrm extends EntityAnimal implements IEntityDefiled, IEnt
 		j1 = getMaxLevel();
 		j2 = parent.getMaxLevel();
 		k = j1 + j2 + rand.nextInt(Math.max(j1, j2) + 1);
-		child.setMaxLevel(Math.min(k / 2, 30));
+		child.setMaxLevel(Math.min(k / 2, Config.bookWyrmMaxLevel));
 	}
 
     /**
