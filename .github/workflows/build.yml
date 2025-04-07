@@ -1,0 +1,39 @@
+name: Build
+
+on:
+  workflow_dispatch: # 手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出代码
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 设置 Java 环境
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'temurin' # 推荐使用 Eclipse Temurin（更现代化和广泛支持的替代品）
+
+      # 赋予 gradlew 执行权限
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # 显示 Gradle 版本
+      - name: Display Gradle version
+        run: ./gradlew --version
+
+      # 使用 Gradle 构建项目
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      # 将生成的 .jar 文件存储为构建工件
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-jar
+          path: build/libs/*.jar # 上传所有 jar 文件
